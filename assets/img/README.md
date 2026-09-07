@@ -1,18 +1,19 @@
 # Image slots
 
-Drop files with these exact names into this folder and the site will pick
-them up automatically — no HTML/CSS changes needed.
-
 | File | Used for |
 |---|---|
-| `clinic-hero.jpg` | Hero section, right-side photo |
-| `clinic-interior.jpg` | About section, clinic interior photo |
-| `dr-emre-aslan.jpg` | Doctor card — Dr. Emre Aslan |
-| `dr-zeynep-kaya.jpg` | Doctor card — Dr. Zeynep Kaya |
-| `dr-mehmet-yildiz.jpg` | Doctor card — Dr. Mehmet Yıldız |
+| `clinic-exterior.png` | Hero section, right-side photo |
+| `clinic-interio.png` | About section, clinic interior photo |
+| `dentist-male-1.png` | Doctor card — Dr. Emre Aslan |
+| `dentist-female-1.png` | Doctor card — Dr. Zeynep Kaya |
+| `dentist-male-2.png` | Doctor card — Dr. Mehmet Yıldız |
 
-Until a file exists, each slot shows an elegant CSS placeholder instead of a
-broken image (see `.photo-frame` / `.photo-fallback` in `css/styles.css`).
-Recommended aspect ratios: 4:5 for the hero photo, 4:3 for the interior
-photo, 1:1 for doctor photos — matching what's already set in the CSS, so
-images will crop via `object-fit: cover` without needing layout changes.
+The two male doctor photos are visually interchangeable (no name/label in
+the images themselves) — `dentist-male-1` was assigned to Dr. Emre Aslan
+and `dentist-male-2` to Dr. Mehmet Yıldız in listing order. Swap the two
+`<img src>` values in `index.html` if you'd rather match them the other
+way.
+
+If a file is ever removed, the site won't break — see `.photo-frame` /
+`.photo-fallback` in `css/styles.css` for the graceful fallback shown in
+its place.
