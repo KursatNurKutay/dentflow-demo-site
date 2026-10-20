@@ -112,6 +112,58 @@ h3 {
   letter-spacing: 0.01em;
 }
 
+/* Promo banner — occasional business messages (offers, campaigns), kept in
+   the same fixed-color "meta strip" layer as .demo-banner above, but with
+   a distinct amber accent so it reads as a business notice rather than
+   clinic content. Dismissible; fixed color in both themes for the same
+   contrast reason as .demo-banner. To run a new promo: edit the text in
+   index.html and change data-promo-id to a new value, so visitors who
+   dismissed the old promo see the new one. To pause: add `hidden` to the
+   element, or delete it. */
+.promo-banner {
+  background: #92400e;
+  color: #fff8ec;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.promo-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+}
+
+.promo-banner-inner p {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.promo-banner-inner strong {
+  font-weight: 700;
+}
+
+.promo-dismiss {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 248, 236, 0.4);
+  color: inherit;
+  width: 22px;
+  height: 22px;
+  line-height: 1;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.promo-dismiss:hover {
+  background: rgba(255, 248, 236, 0.15);
+}
+
 /* Header */
 .site-header {
   position: sticky;
