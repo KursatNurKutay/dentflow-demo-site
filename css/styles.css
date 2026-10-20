@@ -2,6 +2,7 @@
   --color-primary: #0f766e;
   --color-primary-dark: #0b5a54;
   --color-primary-soft: #e7f4f1;
+  --color-banner-bg: #0b5a54;
   --color-ink: #1c2521;
   --color-ink-muted: #5b6a64;
   --color-bg: #fffdfa;
@@ -100,9 +101,10 @@ h3 {
   font-size: 1rem;
 }
 
-/* Demo banner */
+/* Demo banner — fixed dark teal in both themes; white text needs it to not
+   lighten in dark mode the way --color-primary-dark intentionally does */
 .demo-banner {
-  background: var(--color-primary-dark);
+  background: var(--color-banner-bg);
   color: #fdfdfc;
   text-align: center;
   font-size: 0.8rem;
