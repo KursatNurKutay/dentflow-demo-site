@@ -16,6 +16,7 @@
   --shadow-soft: 0 1px 2px rgba(28, 37, 33, 0.04), 0 8px 24px rgba(28, 37, 33, 0.06);
   --shadow-lift: 0 2px 4px rgba(28, 37, 33, 0.05), 0 16px 32px rgba(28, 37, 33, 0.08);
   --container: 1160px;
+  --marquee-duration: 24s;
   color-scheme: light;
 }
 
@@ -130,20 +131,83 @@ h3 {
 .promo-banner-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   padding: 0.6rem 1rem;
-  text-align: center;
 }
 
-.promo-banner-inner p {
-  margin: 0;
+/* Scrolling ticker: two identical copies of the message sit side by side
+   in a row exactly as wide as their natural content (`width: max-content`),
+   and the whole row is animated left by exactly one copy's width (-50%),
+   so the moment the first copy scrolls fully offscreen, the second is in
+   the exact position the first started in — a seamless, repeatable loop
+   regardless of how long the message text is. */
+.promo-marquee {
   flex: 1;
   min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 
-.promo-banner-inner strong {
+.promo-marquee-track {
+  display: inline-flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: promo-marquee-scroll var(--marquee-duration, 24s) linear infinite;
+}
+
+.promo-marquee-item {
+  padding-right: 3rem;
+}
+
+.promo-marquee-item strong {
   font-weight: 700;
+}
+
+@keyframes promo-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.promo-banner:hover .promo-marquee-track,
+.promo-banner:focus-within .promo-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Respect OS-level "reduce motion": fall back to static, centered,
+   wrapping text (the duplicate copy is hidden, the mask/clip is removed)
+   instead of a continuously scrolling ticker. */
+@media (prefers-reduced-motion: reduce) {
+  .promo-banner-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .promo-marquee {
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .promo-marquee-track {
+    display: block;
+    width: auto;
+    white-space: normal;
+    animation: none;
+    transform: none;
+  }
+
+  .promo-marquee-item[aria-hidden="true"] {
+    display: none;
+  }
+
+  .promo-marquee-item {
+    padding-right: 0;
+  }
 }
 
 .promo-dismiss {

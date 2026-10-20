@@ -24,13 +24,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Bu site, DentFlow asistanını gerçek bir klinik ortamında göstermek amacıyla hazırlanmış kurgusal bir demodur — DentFlow, Koby Soft'un bir ürünüdür.
   </div>
 
-  <!-- Promo banner: to run a new campaign, edit the text below and change
+  <!-- Promo banner: to run a new campaign, edit the text in BOTH
+       .promo-marquee-item spans below (keep them identical — the second
+       is a hidden duplicate used for the seamless scroll loop) and change
        data-promo-id to a new value (visitors who dismissed an older promo
        will then see the new one). To pause it, add the hidden attribute
-       to this element, or delete the whole block. -->
+       to this element, or delete the whole block. Scrolling speed is set
+       by --marquee-duration in css/styles.css. -->
   <div class="promo-banner" id="promo-banner" data-promo-id="free-website-2026h2">
     <div class="container promo-banner-inner">
-      <p><strong>Kampanya:</strong> DentFlow'a yıllık abone olan ve web sitesi bulunmayan klinikler için web sitesini ücretsiz hazırlıyoruz.</p>
+      <div class="promo-marquee">
+        <div class="promo-marquee-track">
+          <span class="promo-marquee-item"><strong>Kampanya:</strong> DentFlow'a yıllık abone olan ve web sitesi bulunmayan klinikler için web sitesini ücretsiz hazırlıyoruz.</span>
+          <span class="promo-marquee-item" aria-hidden="true"><strong>Kampanya:</strong> DentFlow'a yıllık abone olan ve web sitesi bulunmayan klinikler için web sitesini ücretsiz hazırlıyoruz.</span>
+        </div>
+      </div>
       <button type="button" class="promo-dismiss" aria-label="Kapat">&times;</button>
     </div>
   </div>
