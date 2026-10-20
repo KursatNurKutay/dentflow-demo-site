@@ -158,6 +158,8 @@ h3 {
 
 .promo-marquee-item {
   padding-right: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .promo-marquee-item strong {
